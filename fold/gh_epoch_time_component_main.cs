@@ -6,9 +6,9 @@ using Rhino.Geometry;
 using System.Linq;
 using Grasshopper;
 
-namespace gh_epoch_time_component
+namespace epoch_time_component
 {
-    public class gh_epoch_time_component : GH_Component
+    public class epoch_time : GH_Component
     {
         GH_Document GrasshopperDocument;
         IGH_Component Component;
@@ -20,7 +20,7 @@ namespace gh_epoch_time_component
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public gh_epoch_time_component(): base("parse json", "fill", "action description", "philsComps", "Subcategory")
+        public epoch_time(): base("epoch time", "", "converting from human readable to epoch time and vice versa", "philsComps", "Misc")
         {
         }
 
@@ -29,8 +29,7 @@ namespace gh_epoch_time_component
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("epochTime", "epochTime", "epochTime", GH_ParamAccess.item);
-            pManager.AddTimeParameter("humanTime", "humanTime", "humanTime", GH_ParamAccess.item);
+            pManager.AddGenericParameter("time", "time", "time", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -38,8 +37,7 @@ namespace gh_epoch_time_component
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTimeParameter("toHumanTime", "toHumanTime", "toHumanTime", GH_ParamAccess.item);
-            pManager.AddTextParameter("toEpochTime", "toEpochTime", "toEpochTime", GH_ParamAccess.item);
+            pManager.AddGenericParameter("converted", "converted", "converted", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -49,18 +47,16 @@ namespace gh_epoch_time_component
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            string epochTime = "";
-            DateTime humanTime = new DateTime();
+            object data_in = new object();
+            object data_out = new object();
 
-            DA.GetData(0, ref epochTime);
-            DA.GetData(1, ref humanTime);
+            if (!DA.GetData(0, ref data_in)) { return; }
 
-            gh_epoch_time EHT = new gh_epoch_time(epochTime, humanTime);
-                        
-            DA.SetData(0, EHT.hT);
-            DA.SetData(1, EHT.eT);
+            convert_time ETC = new convert_time(ref data_in, ref data_out, ref DA);
+
+            DA.SetData(0, data_out);
         }
-
+        
         /// <summary>
         /// Provides an Icon for every component that will be visible in the User Interface.
         /// Icons need to be 24x24 pixels.
@@ -70,9 +66,7 @@ namespace gh_epoch_time_component
             get
             {
                 // You can add image files to your project resources and access them like this:
-                //return Resources.IconForThisComponent;
-                //return osAPIcomp.Properties.Resources.dup;                
-                return null;                
+                return epoch_time_component.Properties.Resources.os_reading_epoch_time;
             }
         }
 

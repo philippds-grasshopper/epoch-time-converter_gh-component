@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace gh_epoch_time_component.Properties {
+namespace epoch_time_component.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace gh_epoch_time_component.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("gh_epoch_time_component.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("epoch_time_component.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,16 @@ namespace gh_epoch_time_component.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap os_reading_epoch_time {
+            get {
+                object obj = ResourceManager.GetObject("os_reading_epoch_time", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

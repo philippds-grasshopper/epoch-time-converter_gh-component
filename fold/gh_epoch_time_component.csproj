@@ -8,8 +8,8 @@
     <ProjectGuid>{DEBC92B2-0EC5-4050-B355-31AB43FB8521}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>gh_epoch_time_component</RootNamespace>
-    <AssemblyName>gh_epoch_time_component</AssemblyName>
+    <RootNamespace>epoch_time_component</RootNamespace>
+    <AssemblyName>epoch_time_component</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -83,7 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Components\" />
-    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\os_reading_epoch_time.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

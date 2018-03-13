@@ -3,7 +3,7 @@ using System.Drawing;
 using Grasshopper.Kernel;
 
 
-namespace gh_epoch_time_component
+namespace epoch_time_component
 {
     public class template_info : GH_AssemblyInfo
     {
@@ -19,8 +19,7 @@ namespace gh_epoch_time_component
             get
             {
                 //Return a 24x24 pixel bitmap to represent this GHA library.
-                //return osAPIcomp.Properties.Resources.dup;
-                return null;
+                return epoch_time_component.Properties.Resources.os_reading_epoch_time;
             }
         }
         public override string Description

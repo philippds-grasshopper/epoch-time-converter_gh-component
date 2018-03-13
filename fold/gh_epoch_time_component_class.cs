@@ -5,20 +5,28 @@ using Rhino.Geometry;
 using System.Linq;
 using Grasshopper;
 
-namespace gh_epoch_time_component
+namespace epoch_time_component
 {
-    public class gh_epoch_time
+    public class convert_time
     {
-        public string eT;
-        public DateTime hT;
-
-
-        public gh_epoch_time(string IepochTime, DateTime IhumanTime)
+        public convert_time(ref object d_in, ref object d_out, ref IGH_DataAccess DA)
         {
-            eT = ToEpoch(IhumanTime);
-            hT = FromUnixTime(Convert.ToInt64(IepochTime));
-        }
+            if (d_in.GetType() == typeof(Grasshopper.Kernel.Types.GH_Time))
+            {
+                DateTime ht = new DateTime();
+                DA.GetData(0, ref ht);
+                d_out = ToEpoch(ht);
+                return;
+            }
 
+            if (d_in.GetType() == typeof(Grasshopper.Kernel.Types.GH_String))
+            {
+                string et = "";
+                DA.GetData(0, ref et);
+                d_out = FromUnixTime(Convert.ToInt64(et));
+                return;
+            }
+        }
 
         public static DateTime FromUnixTime(long unixTime)
         {
@@ -34,4 +42,3 @@ namespace gh_epoch_time_component
     }
 
 }
-
