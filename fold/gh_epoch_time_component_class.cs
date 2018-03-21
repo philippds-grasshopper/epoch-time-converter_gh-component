@@ -30,7 +30,7 @@ namespace epoch_time_component
 
         public static DateTime FromUnixTime(long unixTime)
         {
-            return epoch.AddSeconds(unixTime);
+            return epoch.AddMilliseconds(unixTime);
         }
 
         public static string ToEpoch(DateTime humanTime)
